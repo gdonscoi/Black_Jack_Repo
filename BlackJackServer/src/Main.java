@@ -8,12 +8,12 @@ import Jogo.JogoFactory;
 public class Main {
 
 	public static void main(String[] args) {
-		JogoFactory jogoFactory = new JogoFactory(criarJogo());
+		JogoFactory jogoFactory;
+		jogoFactory = new JogoFactory(Main.criarJogo());
 		
 		int jogarNovamente = 0;
 		do {
 			try {
-				System.out.println("ssss");
 				Jogo jogo = jogoFactory.getJogo();
 				jogo.iniciar();
 		
@@ -28,7 +28,7 @@ public class Main {
 		
 		} while(jogarNovamente == 0);
 	}
-	
+
 	public static Jogo criarJogo() {
 		Jogo jogo = new Jogo();
 		
@@ -40,8 +40,5 @@ public class Main {
 		jogo.adicionarJogador(jogador2);
 
 		return jogo;
-
-		
 	}
-
 }
