@@ -5,30 +5,29 @@ import javax.swing.JOptionPane;
 
 import Baralho.Baralho;
 import Baralho.Carta;
+import Baralho.Proxy;
+import Baralho.ProxyBaralho;
 import Jogador.Jogador;
 
 
 public class Jogo implements Cloneable {
 	private ArrayList<Jogador> jogadores;
-	private Baralho baralho;
+	private Proxy baralho;
 	
 	public Jogo() {
 		this.jogadores = new ArrayList<Jogador>();
 	}
 	
 	public Jogo clone() throws CloneNotSupportedException {
-		for(Jogador jogador : this.jogadores)
-			jogador.dispensarCartas();
-
         return (Jogo) super.clone();
 	}
-
+	
 	public void adicionarJogador(Jogador jogador) {
 		this.jogadores.add(jogador);
 	}
-
+	
 	public void iniciarBaralho() {
-		this.baralho = new Baralho();
+		this.baralho = new ProxyBaralho(jogadores);
 		this.baralho.embaralharCartas();
 	}
 	
@@ -61,16 +60,6 @@ public class Jogo implements Cloneable {
 		}
 	}
 	
-	public int exibirCartas() {
-		String mensagem = "";
-		for(Jogador jogador : this.jogadores) {
-			mensagem += jogador;
-		}
-		mensagem += "Deseja receber outra carta?";
-		
-		return JOptionPane.showConfirmDialog(null, mensagem);
-	}
-	
 	public boolean sortearNovaCarta(Jogador jogador) {
 		try {
 			Carta carta = this.baralho.sortearCarta();
@@ -85,6 +74,16 @@ public class Jogo implements Cloneable {
 		} catch (Exception e) {
 			return false;
 		}
+	}
+	
+	public int exibirCartas() {
+		String mensagem = "";
+		for(Jogador jogador : this.jogadores) {
+			mensagem += jogador;
+		}
+		mensagem += "Deseja receber outra carta?";
+		
+		return JOptionPane.showConfirmDialog(null, mensagem);
 	}
 	
 	public String finalizar() {

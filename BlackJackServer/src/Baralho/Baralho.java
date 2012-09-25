@@ -3,14 +3,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-public class Baralho {
+public class Baralho implements Proxy {
     private ArrayList<Carta> cartas;
 
     public Baralho() {
         this.cartas = new ArrayList<Carta>();
-    }
-
-    public void embaralharCartas() {
         ArrayList<String> nomes = new ArrayList<String>();
         ArrayList<String> naipes = new ArrayList<String>();
         int valor = 1;
@@ -41,14 +38,13 @@ public class Baralho {
             if(valor < 10)
                 valor++;
         }
-        
+    }
+
+    public void embaralharCartas() {        
         Collections.shuffle(this.cartas);
     }
 
     public Carta sortearCarta() throws Exception {
-        if(this.cartas.isEmpty())
-            throw new Exception("O baralho não possui mais cartas.");
-
         Random generator = new Random();
         
         int maximo = this.cartas.size();
@@ -65,5 +61,9 @@ public class Baralho {
 		    System.out.println(carta + "\t");
     	
     	return null;
+    }
+    
+    public int QuantidadeCartas(){
+    	return cartas.size();
     }
 }
