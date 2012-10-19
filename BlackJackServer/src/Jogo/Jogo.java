@@ -5,14 +5,13 @@ import javax.swing.JOptionPane;
 
 import Baralho.Baralho;
 import Baralho.Carta;
-import Baralho.Proxy;
 import Baralho.ProxyBaralho;
 import Jogador.Jogador;
 
 
 public class Jogo implements Cloneable {
 	private ArrayList<Jogador> jogadores;
-	private Proxy baralho;
+	private Baralho baralho;
 	
 	public Jogo() {
 		this.jogadores = new ArrayList<Jogador>();

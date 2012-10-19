@@ -2,18 +2,19 @@ package Baralho;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
 import Jogador.Jogador;
 
-public class ProxyBaralho implements Proxy {
+public class ProxyBaralho implements Baralho {
 
-	private Baralho baralho;
+	private RealBaralho baralho;
 	
 	public ProxyBaralho (ArrayList<Jogador> jogadores ) {
 		if (jogadores.size() < 2) {
 			JOptionPane.showMessageDialog(null, "Impossivel jogar com menos de 2 pessoas, o programa ser? fechado.");
 			System.exit(0);
 		}else 
-			baralho = new Baralho();
+			baralho = new RealBaralho();
 	}
 	
 	public void embaralharCartas() {

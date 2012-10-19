@@ -1,6 +1,6 @@
 package Baralho;
 
-public interface Proxy {
+public interface Baralho {
 	
     public void embaralharCartas();
     

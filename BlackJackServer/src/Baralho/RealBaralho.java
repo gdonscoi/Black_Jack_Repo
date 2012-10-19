@@ -3,10 +3,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-public class Baralho implements Proxy {
+public class RealBaralho implements Baralho {
     private ArrayList<Carta> cartas;
 
-    public Baralho() {
+    public RealBaralho() {
         this.cartas = new ArrayList<Carta>();
         ArrayList<String> nomes = new ArrayList<String>();
         ArrayList<String> naipes = new ArrayList<String>();
